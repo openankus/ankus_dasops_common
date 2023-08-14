@@ -1,0 +1,94 @@
+
+/* Header */
+header {
+    width: 100%;
+    min-width: 1300px;
+    height: 84px;
+    background-color: #001b54;
+    color: #fff;
+}
+header h1 {
+    width: 66px;
+    height: 26px;
+    /* 플롯 */
+    float: left;
+    margin-top: 20px;
+}
+header .gnb {
+    /* 플롯 */
+    float: left;
+    font-size: 1.6rem;
+    margin-top: 38px;
+    margin-left: 128px;
+
+}
+header .gnb li {
+    /* 플롯 */
+    float: left;
+    padding-right: 60px;
+    font-weight: 700;
+}
+header .gnb li a {
+    /* 위치기준값 */
+    position: relative;
+}
+header .gnb li a:after {
+    content: "";
+    width: 0;
+    height: 2px;
+    /* 포지션 */
+    position: absolute;
+    background: #fff;
+    bottom: -26%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+}
+header .gnb li a:hover:after,
+header .gnb li a:focus:after {
+    width: 100%;
+}
+header .lnb {
+    float: right;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 16px;
+    position: relative;
+}
+header .lnb ul {
+    width: 150px;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    color: #000;
+    position: absolute;
+    left: -55px;
+    top: 68px;
+    display: none;
+}
+header .lnb .lnb_user {
+    cursor: pointer;
+}
+header .lnb .lnb_user img {
+    width: 34px;
+}
+header .lnb .lnb_user p {
+    font-size: 1.2rem;
+    margin-top: 8px;
+    display: none;
+}
+header .lnb ul li {
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 2.5;
+    cursor: pointer;
+}
+header .lnb ul li a{
+    display: block;
+    width: 100%;
+}
+header .lnb ul li:hover {
+    background-color: #ececec;
+    border-radius: 0 0 5px 5px;
+}
+/* /Header */

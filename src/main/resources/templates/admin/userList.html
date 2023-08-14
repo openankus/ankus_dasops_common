@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ankus_user_list</title>
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Favicon PC / Mobile-->
+  <!-- <link rel="shorcut icon" href="/common/images/fav_32.jpg"> -->
+  <link rel="shorcut icon" href="/common/images/favicon/fav_180.png">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/common/css/reset.css">
+  <link rel="stylesheet" href="/common/css/font.css">
+  <link rel="stylesheet" href="/common/css/jquery.dataTables.css">
+  <!-- 프로젝트 페이지 CSS -->
+  <link rel="stylesheet" href="/admin/css/userlist.css">
+  <link rel="stylesheet" href="/common/css/header.css">
+
+  <!-- 프로젝트 페이지 SCRIPT -->
+
+  <!-- HTML5 JS File -->
+  <script src="/common/js/html5shiv.js"></script>
+  <script src="/common/js/respond.src.js"></script>
+  <!-- JQ PlugIn -->
+  <script src="/common/js/jquery-1.12.4.min.js"></script>
+  <script src="/common/js/jquery-3.3.1.min.js"></script>
+  <script src="/common/js/jquery-3.4.1.min.js"></script>
+  <!-- PreFix Free -->
+  <script src="/common/js/prefixfree.min.js"></script>
+
+  <script src="/common/js/header.js"></script>
+</head>
+<body>
+<div id="wrap">
+  <!-- Modal -->
+  <div class="delete_modal_bg">
+    <div class="delete_modal">
+      <h3 class="delete_txt">선택한 계정을 <br> 정말 삭제하시겠습니까?</h3>
+      <img src="/common/images/userlist/ex.svg" alt="엑스">
+      <ul class="modal_btn_list">
+        <li><button>취소</button></li>
+        <li><button>삭제</button></li>
+      </ul>
+    </div>
+    <div class="n_delete_modal">
+      <h3 class="n_delete_txt">삭제할 사용자가 선택되지 않았습니다.</h3>
+      <img src="/common/images/userlist/ex.svg" alt="엑스">
+      <button>확인</button>
+    </div>
+  </div>
+  <div class="complete_modal_bg">
+    <div class="complete_modal">
+      <h3 class="complete_txt">???가 완료되었습니다.</h3>
+      <img src="/common/images/userlist/ex.svg" alt="엑스">
+      <button>확인</button>
+    </div>
+  </div>
+  <div class="user_modal_bg">
+    <div class="user_modal">
+      <h3 class="user_title">사용자 정보 수정</h3>
+      <h3 class="ex_btn"><img src="/common/images/userlist/ex.svg" alt="엑스"></h3>
+      <div class="user_img">
+        <img src="/common/images/userlist/user.svg" alt="사용자이미지">
+        <p class="user_name">user1</p>
+      </div>
+      <div class="user_info">
+        <ul class="id">
+          <li>아이디</li>
+          <li>admin1</li>
+        </ul>
+        <ul class="pw">
+          <li>비밀번호</li>
+          <li>*******</li>
+          <li><button class="reset" title="false">비밀번호 초기화</button></li>
+        </ul>
+        <ul class="activation">
+          <li>활성화</li>
+          <li><input type="radio" name="activation" value="abled" checked>활성</li>
+          <li><input type="radio" name="activation" value="disabled">비활성</li>
+        </ul>
+        <ul class="group">
+          <li>그룹(역할)</li>
+          <li>
+          </li>
+        </ul>
+      </div>
+      <div class="user_btn_list">
+        <button class="cancel">취소</button>
+        <button class="save">확인</button>
+      </div>
+    </div>
+  </div>
+  <!-- /Modal -->
+  <!-- Header -->
+  <header class="cf">
+    <div class="w1300">
+      <h1>
+        <a th:if="${server_name == 'ankus_advance_workflow'}" href="/workflow_list"><img src="/common/images/logo.svg" alt="로고"></a>
+        <a th:if="${server_name != 'ankus_advance_workflow'}" href="/mypage"><img src="/common/images/logo.svg" alt="로고"></a>
+      </h1>
+      <nav class="navbar">
+        <ul th:if="${server_name == 'ankus_advance_workflow'}" class="gnb">
+          <li><a href="/file">파일관리</a></li>
+          <li><a href="/workflow_list">워크플로우</a></li>
+          <li><a href="/dblist">DB조회</a></li>
+        </ul>
+        <div class="lnb">
+          <div class="lnb_user">
+            <img src="/common/images/user.svg" alt="사용자이미지">
+            <p sec:authentication="name"></p>
+          </div>
+          <ul>
+            <li sec:authorize="hasRole('관리자')"><a href="/admin">관리자페이지</a></li>
+            <li><a href="/mypage">마이페이지</a></li>
+            <li><a href="/logout">로그아웃</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- /Header -->
+  <!-- Main -->
+  <div class="main_all w1300 cf">
+    <h2>사용자 정보 목록</h2>
+    <div class="search_all">
+      <div class="select">
+        <div class="selected">
+          <div class="selected-value">아이디</div>
+          <div class="arrow"></div>
+        </div>
+        <ul>
+          <li class="option">아이디</li>
+          <li class="option">이름</li>
+        </ul>
+      </div>
+      <ul class="keyword">
+        <li><input type="text" placeholder="검색어"></li>
+      </ul>
+      <div class="status_select">
+        <div class="status_selected">
+          <div class="status_selected-value">전체</div>
+          <div class="status_arrow"></div>
+        </div>
+        <ul>
+          <li class="option2">전체</li>
+          <li class="option2">활성화</li>
+          <li class="option2">비활성화</li>
+        </ul>
+      </div>
+      <div class="date_all">
+        <input type="date" name="inp_date" data-placeholder="날짜 선택" required aria-required="true">
+        <p class="short_line"></p>
+        <input type="date" name="inp_date" data-placeholder="날짜 선택" required aria-required="true">
+      </div>
+      <button class="search">조회</button>
+    </div>
+    <p class="line"></p>
+    <div class="button_result">
+      <button class="del">삭제</button>
+      <p class="result">검색결과 : <span>40건</span></p>
+    </div>
+    <table id="table_id">
+      <thead>
+      <tr>
+        <th><input type="checkbox" name="checkAll"></th>
+        <th>아이디</th>
+        <th>이름</th>
+        <th>그룹(역할)</th>
+        <th>활성화</th>
+        <th>수정일자</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <!-- /Main -->
+  <!-- Footer -->
+  <footer>
+    <p>Copyright &copy; ankus 2022 .ONYCOM</p>
+  </footer>
+  <!-- /Footer -->
+</div>
+<script src="/common/js/jquery.dataTables.js"></script>
+<script src="/admin/js/userlist.js"></script>
+</body>
+</html>

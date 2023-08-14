@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* 기본 스크롤 기능을 하면서, 스크롤바 안보이게 하기 */
+::-webkit-scrollbar { display: none;}
+body { -ms-overflow-style: none;}
+
+/* 적용예시 클래스명 mc */
+.mc::-webkit-scrollbar { display: none;}
+.mc { -ms-overflow-style: none;}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>ankus_login</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <!-- Favicon PC / Mobile-->
+    <link rel="shorcut icon" href="/common/images/fav_32.jpg" type="image/jpeg">
+    <link rel="shorcut icon" href="/common/images/favicon/fav_180.jpg" type="image/jpeg">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/common/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/common/css/font.css" type="text/css">
+    <link rel="stylesheet" href="/common/css/disabled.css">
+
+    <!-- 프로젝트 페이지 CSS -->
+    <link rel="stylesheet" href="/login/css/login.css" type="text/css">
+
+    <!-- 프로젝트 페이지 SCRIPT -->
+
+    <!-- HTML5 JS File -->
+    <script src="/common/js/html5shiv.js" type="text/javascript"></script>
+    <script src="/common/js/respond.src.js" type="text/javascript"></script>
+    <!-- JQ PlugIn -->
+    <script src="/common/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!-- PreFix Free -->
+    <script src="/common/js/prefixfree.min.js" type="text/javascript"></script>
+
+    <script src="/login/js/login.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<div id="wrap">
+    <header class="cf">
+        <div class="left">
+            <p>Login</p>
+            <img src="/common/images/login/login_bg.svg" alt="배경">
+        </div>
+        <div class="right">
+            <p class="logo"><img src="/common/images/login/logo.svg" alt="로고"></p>
+            <ul class="input_box">
+                <li>
+                    <img src="/common/images/login/user.svg" alt="아이디">
+                    <input type="text" maxlength="36" placeholder="아이디" name="username">
+                </li>
+                <li>
+                    <img src="/common/images/login/pw.svg" alt="비밀번호">
+                    <input type="password" maxlength="20" placeholder="비밀번호" name="password">
+                </li>
+            </ul>
+            <div class="log_remember">
+                <input type="checkbox" id="check1" name="remember-me">
+                <label for="check1"></label>
+                <p class="rem_txt">로그인 상태 유지</p>
+            </div>
+            <p class="error_txt">아이디 또는 비밀번호를 잘못 입력했습니다.</p>
+            <button>로그인</button>
+            <ul class="etc_list">
+                <li>계정이 없으신가요?<a href="join">회원가입</a></li>
+            </ul>
+        </div>
+    </header>
+</div>
+</body>
+</html>

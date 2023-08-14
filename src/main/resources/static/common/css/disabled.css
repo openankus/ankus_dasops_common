@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+/* 로그인 페이지 */
+.login_disabled {
+    background-color: #001b54;
+    color: #d1d1d1;
+    opacity: 0.5;
+}
+/* 파일 관리 페이지 */
+.delete_disabled {
+    background-color: #C43737;
+    color: #fff;
+    opacity: 0.5;
+}
+/* 워크플로우 리스트 페이지 */
+.del_disabled {
+    background-color: #C43737;
+    color: #fff;
+    opacity: 0.5;
+}
+/* 워크플로우 등록/수정 페이지 */
+.module_right_btn_disabled {
+    /* 파일검색 모달창 확인 버튼 */
+    background-color: #001b54;
+    color: #d1d1d1;
+    opacity: 0.5;
+}
+.number_btn_disabled {
+    background-color: #c7c7c7;
+    color: #fff;
+    opacity: 0.5;
+  }
+  .module_btn_disabled {
+    background-color: #c7c7c7;
+    color: #fff;
+    opacity: 0.5;
+  }
+  .factor_btn_disabled {
+    background-color: #001b54;
+    color: #d1d1d1;
+    opacity: 0.5;
+    /* 인수 값 입력 모달창 버튼 */
+  }
+  .save_disabled {
+    background-color: #001b54;
+    color: #d1d1d1;
+    opacity: 0.5;
+  }
+
+  /* DB조회 페이지 */
+  .query_btn_disabled {
+    background-color: #c7c7c7;
+    opacity: 0.5;
+  }

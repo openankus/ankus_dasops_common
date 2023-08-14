@@ -1,0 +1,110 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 16px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+li {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+/* 플롯해제 - 클리어픽스 */
+.cf {
+    content: "";
+    display: block;
+    clear: both;
+}
+.card-body {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 30px;
+    border: 2px solid olivedrab;
+    border-radius:22px;
+    border-spacing: -1px;
+    position: relative;
+}
+header h1{
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+header h1 .btn1{
+    margin-left: 80px;
+}
+header p {
+    margin-top: 40px;
+    color: #262626;
+    font-weight: 300;
+    font-size: 14px;
+}
+main {
+    margin-top: 50px;
+}
+main dl {
+    margin-top: 40px;
+}
+main dl dt{
+    font-weight: 550;
+}
+main dl dt button { 
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+main dl dd {
+    background-color: lightgray;
+    padding: 20px;
+    display: none;
+}
+main dl dd a {
+    color: lightsalmon;
+}
+button {
+    display:inline-block;
+}
+
+footer{
+    text-align: center;
+}
+footer .circle_1{
+    border-radius: 50%;
+    height: 800px;
+    width: 800px;
+    background-color: #a7e3f6;
+    /* 포지션 */
+    position: absolute;
+    left: -450px;
+    top: -550px;
+    z-index: -999;
+}
+footer .circle_2{
+    border-radius: 50%;
+    height: 1200px;
+    width: 1200px;
+    background-color: #fff87f;
+    /* 포지션 */
+    position: absolute;
+    right: -1000px;
+    bottom: 1800px;
+    z-index: -999;
+}
+footer .circle_3{
+    border-radius: 50%;
+    height: 1200px;
+    width: 1200px;
+    background-color: palegoldenrod;
+    /* 포지션 */
+    position: absolute;
+    right: 400px;
+    bottom: 1000px;
+    z-index: -999;
+}
