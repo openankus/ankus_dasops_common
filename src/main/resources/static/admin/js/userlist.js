@@ -100,6 +100,13 @@ $(function (){
     // 비번 초기화
     document.getElementsByClassName("reset")[0].addEventListener("click",function () {
         this.title = 'true' // 정보수정 후 최종 확인 후 true면 비번 초기화 시킴
+        document.querySelector(".module_warning_bg").style.display='block'
+    })
+
+    document.querySelector(".module_warning_bg").addEventListener("click",function (e){
+        if(e.target.nodeName === 'BUTTON' || e.target.nodeName === 'IMG'){
+            document.querySelector(".module_warning_bg").style.display='none'
+        }
     })
 
     // 초기 권한 목록 가져오기

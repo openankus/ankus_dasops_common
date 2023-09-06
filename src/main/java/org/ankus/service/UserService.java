@@ -43,6 +43,8 @@ public class UserService {
     @Value("${server.name}")
     String server_name;
 
+    @Value("${user.password}")
+    String defaultPassword;
 
     /**
      * 사용자 패스워드 암호화 객체
@@ -176,7 +178,7 @@ public class UserService {
         User newuser = userRepository.findByLoginId(user.getLoginId()).get(0);
 
         if(user.getPassword().equals("true")){
-            newuser.setPassword(bCryptPasswordEncoder.encode("ankus2022"));
+            newuser.setPassword(bCryptPasswordEncoder.encode(defaultPassword));
         }
         newuser.setEnabled(user.isEnabled());
         List<Role> roleList = new ArrayList<Role>();
@@ -185,8 +187,6 @@ public class UserService {
         }
         newuser.setRoleList(roleList);
         return userRepository.save(newuser).getId().toString();
-
-
     }
 
     public boolean passwordChange(String loginId,String password, String newPassword){

@@ -5,6 +5,7 @@ import org.ankus.model.Privilege;
 import org.ankus.model.Role;
 import org.ankus.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,8 @@ public class DefaultUserDataLoader implements ApplicationListener<ContextRefresh
     @Autowired
     private UserService userService;
 
+    @Value("${user.password}")
+    String defaultPassword;
 
     @Override
     @Transactional
@@ -50,7 +53,7 @@ public class DefaultUserDataLoader implements ApplicationListener<ContextRefresh
         // 기본 관리자 사용자를 얻기 혹은 등록
         String id = "admin";
         String name = "기본 관리자";
-        String password = "ankus";
+        String password = defaultPassword;
         boolean enabled = true;
         List<Role> roleList = Arrays.asList(adminRole);
         User adminUser = userService.getOrCreateUserInfNotFound(id, name, password, enabled, roleList);
