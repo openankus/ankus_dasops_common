@@ -64,6 +64,13 @@ public class AdminController {
         return adminService.passwordUpdate(userId,password);
     }
 
+    // 패스워드 수정
+    @RequestMapping(value="passwordReset")
+    @ResponseBody
+    public String passwordUpdate(@RequestParam String userId){
+        return adminService.passwordUpdate(userId);
+    }
+
     // 사용자 권한 수정
     @RequestMapping(value="userRoleUpdate")
     @ResponseBody

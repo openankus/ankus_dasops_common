@@ -26,7 +26,6 @@ $(function(){
             contentType: "application/json",
             data:JSON.stringify({
                 loginId: document.querySelectorAll(".user_info .id li")[1].textContent,
-                password:document.getElementsByClassName("reset")[0].title === 'true' ,
                 enabled : document.getElementsByClassName("activation")[0].querySelectorAll("input")[0].checked,
                 roleList:roleList
             }),
@@ -99,13 +98,24 @@ $(function(){
 $(function (){
     // 비번 초기화
     document.getElementsByClassName("reset")[0].addEventListener("click",function () {
-        this.title = 'true' // 정보수정 후 최종 확인 후 true면 비번 초기화 시킴
-        document.querySelector(".module_warning_bg").style.display='block'
+        $.ajax({
+            url: '/passwordReset',
+            type: "POST",
+            data:{userId: document.querySelectorAll(".user_info .id li")[1].textContent},
+            success: function (data) {
+                document.querySelector(".complete_modal_bg .complete_txt").textContent='비밀번호가 초기화되었습니다'
+                document.querySelector(".complete_modal_bg").style.display='block'
+                table_id.ajax.reload()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
     })
 
-    document.querySelector(".module_warning_bg").addEventListener("click",function (e){
+    document.querySelector(".complete_modal_bg").addEventListener("click",function (e){
         if(e.target.nodeName === 'BUTTON' || e.target.nodeName === 'IMG'){
-            document.querySelector(".module_warning_bg").style.display='none'
+            document.querySelector(".complete_modal_bg").style.display='none'
         }
     })
 

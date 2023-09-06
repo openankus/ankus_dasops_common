@@ -177,9 +177,6 @@ public class UserService {
     public String userUpdate(User user){
         User newuser = userRepository.findByLoginId(user.getLoginId()).get(0);
 
-        if(user.getPassword().equals("true")){
-            newuser.setPassword(bCryptPasswordEncoder.encode(defaultPassword));
-        }
         newuser.setEnabled(user.isEnabled());
         List<Role> roleList = new ArrayList<Role>();
         for(int i=0;i<user.getRoleList().size();i++) {

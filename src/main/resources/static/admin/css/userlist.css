@@ -134,7 +134,7 @@ html, body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
-  z-index: 500;
+  z-index: 900;
   display: none;
 }
 .complete_modal {

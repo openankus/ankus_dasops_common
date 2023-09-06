@@ -5,6 +5,7 @@ import org.ankus.repository.UserRepository;
 import org.ankus.repository.UserRepositorySupport;
 import org.ankus.util.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class AdminService {
      */
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Value("${user.password}")
+    String defaultPassword;
 
     /**
      * 유저 목록 가져오기
@@ -98,6 +102,13 @@ public class AdminService {
     public String passwordUpdate(String userId, String password){
         User user = userRepository.findByLoginId(userId).get(0);
         user.setPassword(bCryptPasswordEncoder.encode(password));
+        userRepository.save(user);
+        return "완료";
+    }
+
+    public String passwordUpdate(String userId){
+        User user = userRepository.findByLoginId(userId).get(0);
+        user.setPassword(bCryptPasswordEncoder.encode(defaultPassword));
         userRepository.save(user);
         return "완료";
     }
