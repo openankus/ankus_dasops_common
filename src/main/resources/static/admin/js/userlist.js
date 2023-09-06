@@ -296,6 +296,7 @@ $(function () {
                 data: {"loginId": e.target.title},
                 success: function (data) {
                     document.querySelector(".user_modal_bg").style.display = 'inline'
+                    document.querySelector(".user_name").textContent = data.name
                     document.querySelectorAll(".user_modal_bg .id li")[1].textContent = data.loginId
                     if(!data.enabled){
                         document.querySelectorAll(".user_modal_bg .activation li")[2].querySelector("input").checked = true
