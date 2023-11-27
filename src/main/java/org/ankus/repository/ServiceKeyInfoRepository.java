@@ -13,7 +13,10 @@ import java.util.List;
 @Repository
 public interface ServiceKeyInfoRepository extends JpaRepository<ServiceKeyInfo, Long> {
 
+
     List<ServiceKeyInfo> findByUserAndDeleted(User user, Boolean deleted);
+
+
 
     ServiceKeyInfo findByServiceKeyAndDeleted(String serviceKey, Boolean deleted);
 
