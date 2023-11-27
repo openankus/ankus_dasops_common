@@ -68,6 +68,42 @@ $(function(){
     document.getElementsByClassName("withdraw")[0].addEventListener("click",function(){
         document.getElementsByClassName("delete_modal_bg")[0].style.display = 'inline'
     })
+
+
+    // 기존 서비스키 설정
+    $.ajax({
+        type: 'POST',
+        url:'getServiceKey',
+        data: {
+            "loginId" : document.getElementsByClassName("id")[0].querySelectorAll("li")[1].textContent
+        },
+        success: function(data){
+            console.log(data)
+            $('#serviceKey_txt').val(data);
+        },
+        error:function(error){
+            console.log('error:'+error);
+        }
+    });
+    
+    // 서비스키 생성 이벤트 처리
+    document.getElementsByClassName("generate")[0].addEventListener("click",function(){
+        $.ajax({
+            type: 'POST',
+            url:'generateServiceKey',
+            data: {
+                "loginId" : document.getElementsByClassName("id")[0].querySelectorAll("li")[1].textContent
+            },
+            success: function(data){
+                $('#serviceKey_txt').val(data);
+                alert('서비스키가 생성되었습니다.');
+            },
+            error:function(error){
+                console.log('error:'+error);
+            }
+        });
+    })
+
 })
 
 // 모달창 관련 이벤트
