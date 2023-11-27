@@ -501,6 +501,16 @@ h2 {
   padding-left: 6px;
   font-size: 1.2rem;
 }
+.user_info ul li button {
+  width: 70px;
+  height: 34px;
+  background-color: #001b54;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
 .pw li a {
   color: #0849C6;
 }
