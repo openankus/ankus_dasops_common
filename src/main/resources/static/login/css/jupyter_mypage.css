@@ -449,6 +449,11 @@ h2 {
 .inputColor_n {
   color: #ff0000;
 }
+
+/*mg//2024-02-22//service key generate*/
+.serviceKey .generate {
+  cursor: pointer;
+}
 /* /Main */
 
 /* Footer */

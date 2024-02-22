@@ -226,7 +226,7 @@ $(function () {
                 searchable: false,
                 orderable: false,
                 render: function (data, type, full, meta) {
-                    return '<input  type="checkbox" value="' + data + ' " name="check" >';
+                    return '<input  type="checkbox" value="' + data + ' " name="check" onchange="checkDel(this)">';
 
                 }
             },{
@@ -330,6 +330,9 @@ $(function(){
         for (let i = 0; i < list.length; i++) {
             list[i].checked = this.checked;
         }
+
+        //mg//2024-02-22//disable delete button
+        document.querySelector(".del").disabled = !this.checked;
     });
 })
 
@@ -345,6 +348,29 @@ function selectOption(optionElement) {
     const selectedElement = selectBox.querySelector(".selected-value");
     selectedElement.textContent = optionElement.textContent;
     selectedElement.style.color='black'
+}
+
+//mg//2024-02-22//delete button enable/disable
+function checkDel(checked) {
+    //uncheck
+    if (!checked.checked) {
+        let el = document.getElementsByName("check")
+        //check list
+        for(let i=0;i<el.length;i++) {
+            //checked
+            if (el[i].checked) {
+                //enable delete button
+                document.querySelector(".del").disabled = false;
+                return;
+            }
+        }
+        //disable delete button
+        document.querySelector(".del").disabled = true;
+    }//if : uncheck
+    else {
+        //enable delete button
+        document.querySelector(".del").disabled = false;
+    }
 }
 
 selectBoxElements.forEach(selectBoxElement => {

@@ -469,6 +469,11 @@ h2 {
   text-align: center;
   cursor: pointer;
 }
+/*mg//2024-02-22//disable delete*/
+.button_result .del:disabled {
+  cursor: auto;
+  background-color: #999999;
+}
 .button_result .result {
   font-size: 1.4rem;
   font-weight: 400;
